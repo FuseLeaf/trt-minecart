@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "org.fuseleaf.trtminecart.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"MinecartHopperMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
