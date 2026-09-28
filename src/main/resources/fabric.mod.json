@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "trt-minecart",
+	"version": "${version}",
+	"name": "TRT Minecart",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"FuseLeaf Studio"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/trt-minecart/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.fuseleaf.trtminecart.TRTMinecart"
+		]
+	},
+	"mixins": [
+		"trt-minecart.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": ">=26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
