@@ -7,7 +7,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.vehicle.minecart.MinecartHopper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RailBlock;
+import net.minecraft.world.level.block.BaseRailBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class Tunneling {
@@ -49,7 +49,7 @@ public class Tunneling {
 
                 if (
                     state.isAir()
-                    || state.getBlock() instanceof RailBlock
+                    || BaseRailBlock.isRail(state)
                     || state.getDestroySpeed(level, pos) < 0
                     || !itemStack.isCorrectToolForDrops(state)
                 ) {
