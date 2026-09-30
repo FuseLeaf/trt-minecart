@@ -22,7 +22,17 @@ public class Tunneling {
             return;
         }
 
-        ItemStack itemStack = cart.getItem(0);
+        int index = 0;
+
+        while (!cart.getItem(index).is(ItemTags.PICKAXES)) {
+            index++;
+
+            if (index + 1 > cart.getContainerSize()) {
+                return;
+            }
+        }
+
+        ItemStack itemStack = cart.getItem(index);
 
         if (!itemStack.is(ItemTags.PICKAXES)) {
             return;
