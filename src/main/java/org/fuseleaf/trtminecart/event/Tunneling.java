@@ -51,12 +51,11 @@ public class Tunneling {
                     state.isAir()
                     || BaseRailBlock.isRail(state)
                     || state.getDestroySpeed(level, pos) < 0
-                    || !itemStack.isCorrectToolForDrops(state)
                 ) {
                     continue;
                 }
 
-                level.destroyBlock(pos, true);
+                level.destroyBlock(pos, itemStack.isCorrectToolForDrops(state));
                 itemStack.hurtAndBreak(
                     1,
                     (ServerLevel)level,
