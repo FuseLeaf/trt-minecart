@@ -14,8 +14,6 @@ public class MinecartHopperMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     public void injectTick(CallbackInfo ci) {
-        MinecartHopper cart = (MinecartHopper)(Object)this;
-
-        EventManager.tick(cart);
+        EventManager.tick((MinecartHopper)(Object)this);
     }
 }
