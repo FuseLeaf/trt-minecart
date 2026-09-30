@@ -15,8 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class Tunneling {
 
-    private static int miningTicks = 0;
-
     public static void tick(MinecartHopper cart) {
         Level level = cart.level();
 
@@ -32,14 +30,6 @@ public class Tunneling {
 
         BlockPos targetPos = BlockPos.containing(cart.position()).relative(cart.getMotionDirection());
         Direction side = cart.getMotionDirection().getClockWise();
-
-        miningTicks++;
-
-        if (miningTicks < 20) {
-            return;
-        }
-
-        miningTicks = 0;
 
         for (int y = 0; y < 3; y++) {
             for (int x = -1; x <= 1; x++) {
