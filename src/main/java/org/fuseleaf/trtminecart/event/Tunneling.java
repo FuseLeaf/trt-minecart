@@ -3,7 +3,10 @@ package org.fuseleaf.trtminecart.event;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.minecart.MinecartHopper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -60,7 +63,9 @@ public class Tunneling {
                     1,
                     (ServerLevel)level,
                     null,
-                    brokenItem -> {}
+                    brokenItem -> {
+                        level.playSound((Entity)cart, pos, SoundEvents.ITEM_BREAK.value(), SoundSource.NEUTRAL);
+                    }
                 );
             }
         }
