@@ -16,7 +16,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"testingmod20260928" {
+		"trt-minecart" {
 			sourceSet sourceSets.main
 		}
 	}

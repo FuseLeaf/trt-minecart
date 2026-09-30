@@ -10,4 +10,4 @@ pluginManagement {
 }
 
 // Should match your modid
-rootProject.name = 'testingmod20260928'
+rootProject.name = 'trt-minecart'
