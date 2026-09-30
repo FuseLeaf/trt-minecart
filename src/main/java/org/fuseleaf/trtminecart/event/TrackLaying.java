@@ -32,14 +32,16 @@ public class TrackLaying {
         }
 
         ItemStack itemStack = cart.getItem(index);
+        BlockItem blockItem = (BlockItem)itemStack.getItem();
+        BlockState blockState = blockItem.getBlock().defaultBlockState();
         BlockPos targetPos = BlockPos.containing(cart.position());
         BlockState targetState = level.getBlockState(targetPos);
 
-        if (!targetState.canBeReplaced() || !(itemStack.getItem() instanceof BlockItem blockItem)) {
+        if (!targetState.canBeReplaced() || !blockState.canSurvive(level, targetPos)) {
             return;
         }
 
-        level.setBlockAndUpdate(targetPos, blockItem.getBlock().defaultBlockState());
+        level.setBlockAndUpdate(targetPos, blockState);
         itemStack.consume(1, null);
     }
 
