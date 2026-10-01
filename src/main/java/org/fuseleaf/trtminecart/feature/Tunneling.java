@@ -1,4 +1,6 @@
-package org.fuseleaf.trtminecart.event;
+package org.fuseleaf.trtminecart.feature;
+
+import org.fuseleaf.trtminecart.item.ItemFinder;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,38 +18,26 @@ import net.minecraft.world.level.block.state.BlockState;
 public class Tunneling {
 
     public static void tick(MinecartHopper cart) {
+        ItemStack pickaxeItem = ItemFinder.find(
+            cart,
+            item -> item.is(ItemTags.PICKAXES)
+        );
+
+        if (pickaxeItem.isEmpty()) {
+            return;
+        }
+
         Level level = cart.level();
-
-        if (level.isClientSide()) {
-            return;
-        }
-
-        int index = 0;
-
-        while (!cart.getItem(index).is(ItemTags.PICKAXES)) {
-            index++;
-
-            if (index + 1 > cart.getContainerSize()) {
-                return;
-            }
-        }
-
-        ItemStack itemStack = cart.getItem(index);
-
-        if (!itemStack.is(ItemTags.PICKAXES)) {
-            return;
-        }
-
         BlockPos targetPos = BlockPos.containing(cart.position()).relative(cart.getMotionDirection());
-        Direction side = cart.getMotionDirection().getClockWise();
+        Direction cartSide = cart.getMotionDirection().getClockWise();
 
         for (int y = 0; y < 3; y++) {
             for (int x = -1; x <= 1; x++) {
-                if (itemStack == null) {
+                if (pickaxeItem == null) {
                     return;
                 }
 
-                BlockPos pos = targetPos.relative(side, x).above(y);
+                BlockPos pos = targetPos.relative(cartSide, x).above(y);
                 BlockState state = level.getBlockState(pos);
 
                 if (
@@ -58,8 +48,8 @@ public class Tunneling {
                     continue;
                 }
 
-                level.destroyBlock(pos, itemStack.isCorrectToolForDrops(state));
-                itemStack.hurtAndBreak(
+                level.destroyBlock(pos, pickaxeItem.isCorrectToolForDrops(state));
+                pickaxeItem.hurtAndBreak(
                     1,
                     (ServerLevel)level,
                     null,
