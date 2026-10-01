@@ -1,4 +1,4 @@
-package org.fuseleaf.trtminecart.feature;
+package org.fuseleaf.trtminecart.construct;
 
 import org.fuseleaf.trtminecart.item.ItemFinder;
 

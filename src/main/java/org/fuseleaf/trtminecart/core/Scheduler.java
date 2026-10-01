@@ -1,8 +1,8 @@
 package org.fuseleaf.trtminecart.core;
 
-import org.fuseleaf.trtminecart.feature.RoadbedLaying;
-import org.fuseleaf.trtminecart.feature.TrackLaying;
-import org.fuseleaf.trtminecart.feature.Tunneling;
+import org.fuseleaf.trtminecart.construct.RoadbedLaying;
+import org.fuseleaf.trtminecart.construct.TrackLaying;
+import org.fuseleaf.trtminecart.destroy.Tunneling;
 
 import net.minecraft.world.entity.vehicle.minecart.MinecartHopper;
 
