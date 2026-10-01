@@ -3,13 +3,22 @@
 	"id": "trt-minecart",
 	"version": "${version}",
 	"name": "TRT Minecart",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Turn minecarts into automated machines for tunneling, roadbed construction, and track laying.",
 	"authors": [
 		"FuseLeaf Studio"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/FuseLeaf/trt-minecart",
+		"issues": "https://github.com/FuseLeaf/trt-minecart/issues",
+		"sources": "https://github.com/FuseLeaf/trt-minecart"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.modrinth": "https://modrinth.com/mod/trt-minecart",
+				"modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/trt-minecart"
+			}
+		}
 	},
 	"license": "GPL-3.0",
 	"icon": "assets/trt-minecart/icon.png",
@@ -25,7 +34,6 @@
 	"depends": {
 		"fabricloader": ">=0.19.5",
 		"minecraft": ">=26.3",
-		"java": ">=25",
-		"fabric-api": "*"
+		"java": ">=25"
 	}
 }

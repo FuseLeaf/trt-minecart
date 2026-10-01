@@ -1,4 +1,6 @@
-package org.fuseleaf.trtminecart.event;
+package org.fuseleaf.trtminecart.construct;
+
+import org.fuseleaf.trtminecart.item.ItemFinder;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -11,40 +13,34 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RoadbedLaying {
 
     public static void tick(MinecartHopper cart) {
-        Level level = cart.level();
+        ItemStack roadbedBlockItem = ItemFinder.find(
+            cart,
+            item -> item.getItem() instanceof BlockItem
+        );
 
-        if (level.isClientSide()) {
+        if (roadbedBlockItem.isEmpty()) {
             return;
         }
 
-        int index = 0;
-
-        while (!(cart.getItem(index).getItem() instanceof BlockItem)) {
-            index++;
-
-            if (index + 1 > cart.getContainerSize()) {
-                return;
-            }
-        }
-
-        ItemStack itemStack = cart.getItem(index);
+        Level level = cart.level();
         BlockPos targetPos = BlockPos.containing(cart.position()).relative(cart.getMotionDirection());
-        Direction side = cart.getMotionDirection().getClockWise();
+        Direction cartSide = cart.getMotionDirection().getClockWise();
+        final BlockState ROADBED_BLOCK_DEFAULT_STATE = ((BlockItem)(roadbedBlockItem.getItem())).getBlock().defaultBlockState();
 
         for (int x = -1; x <= 1; x++) {
-            if (itemStack == null || !(itemStack.getItem() instanceof BlockItem blockItem)) {
+            if (roadbedBlockItem == null) {
                 return;
             }
 
-            BlockPos pos = targetPos.relative(side, x).below();
+            BlockPos pos = targetPos.relative(cartSide, x).below();
             BlockState state = level.getBlockState(pos);
 
             if (!state.canBeReplaced()) {
                 continue;
             }
 
-            level.setBlockAndUpdate(pos, blockItem.getBlock().defaultBlockState());
-            itemStack.consume(1, null);
+            level.setBlockAndUpdate(pos, ROADBED_BLOCK_DEFAULT_STATE);
+            roadbedBlockItem.consume(1, null);
         }
     }
 }

@@ -1,6 +1,6 @@
 package org.fuseleaf.trtminecart.mixin;
 
-import org.fuseleaf.trtminecart.event.EventManager;
+import org.fuseleaf.trtminecart.core.Scheduler;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,8 +14,6 @@ public class MinecartHopperMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     public void injectTick(CallbackInfo ci) {
-        MinecartHopper cart = (MinecartHopper)(Object)this;
-
-        EventManager.tick(cart);
+        Scheduler.tick((MinecartHopper)(Object)this);
     }
 }
