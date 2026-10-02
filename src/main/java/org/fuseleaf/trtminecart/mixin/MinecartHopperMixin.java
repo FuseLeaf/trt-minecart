@@ -13,7 +13,7 @@ import net.minecraft.world.entity.vehicle.minecart.MinecartHopper;
 public class MinecartHopperMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
-    public void injectTick(CallbackInfo ci) {
+    private void injectTick(CallbackInfo ci) {
         Scheduler.tick((MinecartHopper)(Object)this);
     }
 }
