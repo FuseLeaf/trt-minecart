@@ -34,7 +34,8 @@ Check out the latest development progress here: [Development Progress](https://f
 
 ### Tunneling
 
-Place pickaxes in the hopper minecart. It will attempt to mine a 3 × 3 area in the direction of travel. Block drops follow the properties of the pickaxe.
+- Place pickaxes in the hopper minecart. It will attempt to mine a 3 × 3 area in the direction of travel. Block drops follow the properties of the pickaxe.
+- Blocks without collision shapes or with rails on top are not mined during excavation.
 
 ### Roadbed Laying
 

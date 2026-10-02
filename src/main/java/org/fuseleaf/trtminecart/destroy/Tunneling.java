@@ -42,7 +42,8 @@ public class Tunneling {
 
                 if (
                     state.isAir()
-                    || BaseRailBlock.isRail(state)
+                    || BaseRailBlock.isRail(level, pos)
+                    || BaseRailBlock.isRail(level, pos.above())
                     || state.getDestroySpeed(level, pos) < 0
                     || state.getCollisionShape(level, pos).isEmpty()
                 ) {
